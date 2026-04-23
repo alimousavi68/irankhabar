@@ -1,6 +1,10 @@
 import tailwindcss from '@tailwindcss/vite';
+import { fileURLToPath } from 'url';
 import path from 'path';
-import {defineConfig} from 'vite';
+import { defineConfig } from 'vite';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export default defineConfig({
   base: '',
@@ -8,6 +12,14 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, '.'),
+    },
+  },
+  build: {
+    rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, 'index.html'),
+        post: path.resolve(__dirname, 'post.html'),
+      },
     },
   },
   server: {
