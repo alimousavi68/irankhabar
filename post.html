@@ -127,10 +127,10 @@
             </div>
 
 
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-4">
 
                 <!-- Post Content (Col 9) -->
-                <article class="lg:col-span-9 print:col-span-12 lg:border-l lg:border-[#e0e0e0] lg:pl-8">
+                <article class="lg:col-span-8 print:col-span-12  lg:pl-4">
                     <!-- Breadcrumbs & Social Row -->
                     <div class="flex items-center justify-between  pb-4">
                         <!-- Breadcrumbs (Top Right) -->
@@ -275,38 +275,44 @@
 
                     <!-- Post Footer (Tags, Shortlink) -->
                     <footer class="mb-12 print:hidden border-t border-[#e0e0e0] pt-10">
-                        <div class="flex flex-wrap items-center gap-2 mb-10">
-                            <span class="text-gray-400 text-xs ml-2">برچسب‌ها:</span>
-                            <a href="#"
-                                class="bg-gray-100 dark:bg-gray-800 text-gray-500 px-3 py-1.5 rounded-lg text-xs hover:bg-brand hover:text-white transition-all">اقتصاد
-                                ایران</a>
-                            <a href="#"
-                                class="bg-gray-100 dark:bg-gray-800 text-gray-500 px-3 py-1.5 rounded-lg text-xs hover:bg-brand hover:text-white transition-all">بازنشستگان</a>
-                            <a href="#"
-                                class="bg-gray-100 dark:bg-gray-800 text-gray-500 px-3 py-1.5 rounded-lg text-xs hover:bg-brand hover:text-white transition-all">حقوق
-                                و مزایا</a>
-                        </div>
-
-                        <div
-                            class="bg-white dark:bg-gray-900 border border-[#e0e0e0] rounded-2xl p-8 flex flex-col items-center justify-center text-center max-w-lg mx-auto">
-                            <div class="flex items-center gap-2 mb-4 text-gray-500">
-                                <i data-lucide="link" class="w-4 h-4"></i>
-                                <span class="text-sm font-medium">لینک کوتاه مطلب:</span>
+                        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-10">
+                            <div class="flex flex-wrap items-center gap-2">
+                                <span class="text-gray-400 text-xs ml-2">برچسب‌ها:</span>
+                                <a href="#"
+                                    class="bg-gray-100 dark:bg-gray-800 text-gray-500 px-3 py-1.5 rounded-lg text-[11px] lg:text-xs hover:bg-brand hover:text-white transition-all">اقتصاد
+                                    ایران</a>
+                                <a href="#"
+                                    class="bg-gray-100 dark:bg-gray-800 text-gray-500 px-3 py-1.5 rounded-lg text-[11px] lg:text-xs hover:bg-brand hover:text-white transition-all">بازنشستگان</a>
+                                <a href="#"
+                                    class="bg-gray-100 dark:bg-gray-800 text-gray-500 px-3 py-1.5 rounded-lg text-[11px] lg:text-xs hover:bg-brand hover:text-white transition-all">حقوق
+                                    و مزایا</a>
                             </div>
-                            <div class="relative w-full max-w-sm">
-                                <div class="w-full bg-gray-50 dark:bg-black border border-[#e0e0e0] rounded-xl px-4 py-3 text-sm font-mono text-gray-600 dark:text-gray-400 pr-12"
-                                    id="short-link-text">https://iran-news.ir/p/61091</div>
-                                <button id="copy-link-btn"
-                                    class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center text-gray-400 hover:text-brand transition-colors">
-                                    <i data-lucide="copy" class="w-4 h-4"></i>
-                                </button>
+
+                            <div
+                                class="bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700 rounded-xl p-3 lg:p-4 flex items-center gap-3 max-w-xs lg:max-w-sm">
+                                <div class="flex items-center gap-2 text-gray-500 shrink-0">
+                                    <i data-lucide="link" class="w-3.5 h-3.5"></i>
+                                    <span class="text-[11px] font-medium hidden sm:inline">لینک کوتاه:</span>
+                                </div>
+                                <div class="relative flex-1 flex items-center bg-white dark:bg-black border border-gray-200 dark:border-gray-700 rounded-lg px-3 py-1.5">
+                                    <div class="text-[11px] font-mono text-gray-500 dark:text-gray-400 truncate" id="short-link-text">https://iran-news.ir/p/61091</div>
+                                    <button id="copy-link-btn"
+                                        class="mr-2 text-gray-400 hover:text-brand transition-colors">
+                                        <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </footer>
 
                     <!-- Related News -->
                     <section class="mb-12 print:hidden border-t border-[#e0e0e0] pt-10">
-                        <h2 class="text-xl font-bold mb-8 text-gray-900 dark:text-white">اخبار مرتبط</h2>
+                        <h2 class="text-2xl font-medium mb-6 flex items-center gap-3">
+                            <span class="w-2 h-8 bg-brand rounded-full"></span>
+                            <div class="flex items-center gap-1">
+                                <span class="text-brand">اخبار</span><span class="text-secondary"> مرتبط</span>
+                            </div>
+                        </h2>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <!-- Related Item 1 -->
                             <a href="#" class="group block">
@@ -368,72 +374,72 @@
                             <!-- Right: Social Cards -->
                             <div class="xl:w-2/3 grid grid-cols-2 lg:grid-cols-3 gap-4 w-full">
                                 <!-- Instagram -->
-                                <a href="#" class="relative overflow-hidden bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl p-6 transition-all duration-500 hover:shadow-2xl flex flex-col items-center text-center group social-card-shine">
+                                <a href="#" class="relative overflow-hidden bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl p-6 transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 flex flex-col items-center text-center group social-card-pulse">
                                     <div class="w-16 h-16 rounded-2xl flex items-center justify-center text-white mb-4 relative z-10 shadow-lg group-hover:scale-110 transition-transform duration-500 social-instagram-bg">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
                                     </div>
                                     <span class="block text-base font-black text-gray-900 dark:text-white mb-1">اینستاگرام</span>
-                                    <div class="mt-4 flex items-center gap-2 text-[10px] lg:text-[11px] font-medium py-1.5 px-3 lg:px-4 rounded-full border border-gray-100 dark:border-gray-800 group-hover:bg-brand group-hover:text-white group-hover:border-brand transition-all whitespace-nowrap">
+                                    <div class="mt-4 flex items-center gap-2 text-[10px] lg:text-[11px] font-medium py-1.5 px-3 lg:px-4 rounded-full border border-gray-100 dark:border-gray-800 transition-all whitespace-nowrap social-btn-gradient">
                                         <span>مشاهده صفحه</span>
                                         <i data-lucide="chevron-left" class="w-3 h-3"></i>
                                     </div>
                                 </a>
 
                                 <!-- Telegram -->
-                                <a href="#" class="relative overflow-hidden bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl p-6 transition-all duration-500 hover:shadow-2xl flex flex-col items-center text-center group social-card-shine">
+                                <a href="#" class="relative overflow-hidden bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl p-6 transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 flex flex-col items-center text-center group social-card-pulse">
                                     <div class="w-16 h-16 rounded-2xl flex items-center justify-center text-white mb-4 relative z-10 shadow-lg group-hover:scale-110 transition-transform duration-500 social-telegram-bg">
                                         <i data-lucide="send" class="w-8 h-8"></i>
                                     </div>
                                     <span class="block text-base font-black text-gray-900 dark:text-white mb-1">تلگرام</span>
-                                    <div class="mt-4 flex items-center gap-2 text-[10px] lg:text-[11px] font-medium py-1.5 px-3 lg:px-4 rounded-full border border-gray-100 dark:border-gray-800 group-hover:bg-brand group-hover:text-white group-hover:border-brand transition-all whitespace-nowrap">
+                                    <div class="mt-4 flex items-center gap-2 text-[10px] lg:text-[11px] font-medium py-1.5 px-3 lg:px-4 rounded-full border border-gray-100 dark:border-gray-800 transition-all whitespace-nowrap social-btn-gradient">
                                         <span>عضویت در کانال</span>
                                         <i data-lucide="chevron-left" class="w-3 h-3"></i>
                                     </div>
                                 </a>
 
                                 <!-- WhatsApp -->
-                                <a href="#" class="relative overflow-hidden bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl p-6 transition-all duration-500 hover:shadow-2xl flex flex-col items-center text-center group social-card-shine">
+                                <a href="#" class="relative overflow-hidden bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl p-6 transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 flex flex-col items-center text-center group social-card-pulse">
                                     <div class="w-16 h-16 rounded-2xl flex items-center justify-center text-white mb-4 relative z-10 shadow-lg group-hover:scale-110 transition-transform duration-500 social-whatsapp-bg">
-                                        <i data-lucide="message-circle" class="w-8 h-8"></i>
+                                        <img src="assets/icons/whatsapp-line.svg" class="w-8 h-8 filter brightness-0 invert" alt="WhatsApp">
                                     </div>
                                     <span class="block text-base font-black text-gray-900 dark:text-white mb-1">واتساپ</span>
-                                    <div class="mt-4 flex items-center gap-2 text-[10px] lg:text-[11px] font-medium py-1.5 px-3 lg:px-4 rounded-full border border-gray-100 dark:border-gray-800 group-hover:bg-brand group-hover:text-white group-hover:border-brand transition-all whitespace-nowrap">
+                                    <div class="mt-4 flex items-center gap-2 text-[10px] lg:text-[11px] font-medium py-1.5 px-3 lg:px-4 rounded-full border border-gray-100 dark:border-gray-800 transition-all whitespace-nowrap social-btn-gradient">
                                         <span>ارسال پیام</span>
                                         <i data-lucide="chevron-left" class="w-3 h-3"></i>
                                     </div>
                                 </a>
 
-                                <!-- Twitter -->
-                                <a href="#" class="relative overflow-hidden bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl p-6 transition-all duration-500 hover:shadow-2xl flex flex-col items-center text-center group social-card-shine">
-                                    <div class="w-16 h-16 rounded-2xl flex items-center justify-center text-white mb-4 relative z-10 shadow-lg group-hover:scale-110 transition-transform duration-500 social-twitter-bg">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932 6.064-6.932zm-1.292 19.494h2.039L6.486 3.24H4.298l13.311 17.407z"/></svg>
+                                <!-- Eitaa -->
+                                <a href="#" class="relative overflow-hidden bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl p-6 transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 flex flex-col items-center text-center group social-card-pulse">
+                                    <div class="w-16 h-16 rounded-2xl flex items-center justify-center text-white mb-4 relative z-10 shadow-lg group-hover:scale-110 transition-transform duration-500 social-eitaa-bg">
+                                        <img src="assets/icons/eitaa-logo.svg" class="w-10 h-10 filter brightness-0 invert" alt="Eitaa">
                                     </div>
-                                    <span class="block text-base font-black text-gray-900 dark:text-white mb-1">توییتر (X)</span>
-                                    <div class="mt-4 flex items-center gap-2 text-[10px] lg:text-[11px] font-medium py-1.5 px-3 lg:px-4 rounded-full border border-gray-100 dark:border-gray-800 group-hover:bg-brand group-hover:text-white group-hover:border-brand transition-all whitespace-nowrap">
-                                        <span>مشاهده صفحه</span>
+                                    <span class="block text-base font-black text-gray-900 dark:text-white mb-1">ایتا</span>
+                                    <div class="mt-4 flex items-center gap-2 text-[10px] lg:text-[11px] font-medium py-1.5 px-3 lg:px-4 rounded-full border border-gray-100 dark:border-gray-800 transition-all whitespace-nowrap social-btn-gradient">
+                                        <span>مشاهده کانال</span>
                                         <i data-lucide="chevron-left" class="w-3 h-3"></i>
                                     </div>
                                 </a>
 
                                 <!-- Bale -->
-                                <a href="#" class="relative overflow-hidden bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl p-6 transition-all duration-500 hover:shadow-2xl flex flex-col items-center text-center group social-card-shine">
+                                <a href="#" class="relative overflow-hidden bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl p-6 transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 flex flex-col items-center text-center group social-card-pulse">
                                     <div class="w-16 h-16 rounded-2xl flex items-center justify-center text-white mb-4 relative z-10 shadow-lg group-hover:scale-110 transition-transform duration-500 social-bale-bg">
                                         <img src="assets/icons/bale.svg" class="w-8 h-8 filter brightness-0 invert" alt="Bale">
                                     </div>
                                     <span class="block text-base font-black text-gray-900 dark:text-white mb-1">بله</span>
-                                    <div class="mt-4 flex items-center gap-2 text-[10px] lg:text-[11px] font-medium py-1.5 px-3 lg:px-4 rounded-full border border-gray-100 dark:border-gray-800 group-hover:bg-brand group-hover:text-white group-hover:border-brand transition-all whitespace-nowrap">
+                                    <div class="mt-4 flex items-center gap-2 text-[10px] lg:text-[11px] font-medium py-1.5 px-3 lg:px-4 rounded-full border border-gray-100 dark:border-gray-800 transition-all whitespace-nowrap social-btn-gradient">
                                         <span>مشاهده کانال</span>
                                         <i data-lucide="chevron-left" class="w-3 h-3"></i>
                                     </div>
                                 </a>
 
                                 <!-- Rubika -->
-                                <a href="#" class="relative overflow-hidden bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl p-6 transition-all duration-500 hover:shadow-2xl flex flex-col items-center text-center group social-card-shine">
+                                <a href="#" class="relative overflow-hidden bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl p-6 transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 flex flex-col items-center text-center group social-card-pulse">
                                     <div class="w-16 h-16 rounded-2xl flex items-center justify-center text-white mb-4 relative z-10 shadow-lg group-hover:scale-110 transition-transform duration-500 social-rubika-bg">
                                         <img src="assets/icons/rubika.svg" class="w-8 h-8 filter brightness-0 invert" alt="Rubika">
                                     </div>
                                     <span class="block text-base font-black text-gray-900 dark:text-white mb-1">روبیکا</span>
-                                    <div class="mt-4 flex items-center gap-2 text-[10px] lg:text-[11px] font-medium py-1.5 px-3 lg:px-4 rounded-full border border-gray-100 dark:border-gray-800 group-hover:bg-brand group-hover:text-white group-hover:border-brand transition-all whitespace-nowrap">
+                                    <div class="mt-4 flex items-center gap-2 text-[10px] lg:text-[11px] font-medium py-1.5 px-3 lg:px-4 rounded-full border border-gray-100 dark:border-gray-800 transition-all whitespace-nowrap social-btn-gradient">
                                         <span>مشاهده صفحه</span>
                                         <i data-lucide="chevron-left" class="w-3 h-3"></i>
                                     </div>
@@ -529,11 +535,16 @@
                 </article>
 
                 <!-- Sidebar (Col 3) -->
-                <aside class="lg:col-span-3 print:hidden">
+                <aside class="lg:col-span-4 print:hidden dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-4 md:p-6 shadow-sm">
                     <div class="sticky top-8 space-y-12">
                         <!-- Most Viewed Widget -->
                         <div>
-                            <h3 class="text-xl font-bold mb-6 text-gray-900 dark:text-white">اخبار پربازدید</h3>
+                            <h2 class="text-2xl font-medium mb-6 flex items-center gap-3">
+                                <span class="w-2 h-8 bg-brand rounded-full"></span>
+                                <div class="flex items-center gap-1">
+                                    <span class="text-brand">اخبار</span><span class="text-secondary"> پربازدید</span>
+                                </div>
+                            </h2>
                             <div id="most-visited-container" class="space-y-6">
                                 <!-- Will be populated by JS with thumbnails -->
                             </div>
@@ -541,7 +552,12 @@
 
                         <!-- Latest News Widget -->
                         <div>
-                            <h3 class="text-xl font-bold mb-6 text-gray-900 dark:text-white">آخرین اخبار</h3>
+                            <h2 class="text-2xl font-medium mb-6 flex items-center gap-3">
+                                <span class="w-2 h-8 bg-brand rounded-full"></span>
+                                <div class="flex items-center gap-1">
+                                    <span class="text-brand">آخرین</span><span class="text-secondary"> اخبار</span>
+                                </div>
+                            </h2>
                             <div id="sidebar-latest-news" class="space-y-4">
                                 <!-- Will be populated by JS -->
                             </div>
@@ -580,31 +596,12 @@
                 </div>
             </div>
             <div class="pt-8 mt-8 border-t border-gray-800 text-center text-xs text-gray-500">
-                <p>© ۲۰۲۶ اخبار ایران. تمامی حقوق محفوظ است.</p>
+                <p>طراحی و توسعه: <a href="#" class="text-brand hover:underline transition-all">هشت بهشت</a></p>
             </div>
         </div>
     </footer>
 
-    <!-- Mobile Bottom Nav -->
-    <nav
-        class="lg:hidden fixed bottom-0 left-0 right-0 bg-white/90 dark:bg-black/90 backdrop-blur-lg border-t border-gray-200 dark:border-gray-800 h-16 flex items-center justify-around px-4 z-50">
-        <a href="./" class="flex flex-col items-center gap-1 text-gray-400">
-            <i data-lucide="home" class="w-6 h-6" stroke-width="1.5"></i>
-            <span class="text-[10px] font-bold">خانه</span>
-        </a>
-        <a href="#" class="flex flex-col items-center gap-1 text-gray-400">
-            <i data-lucide="trending-up" class="w-6 h-6" stroke-width="1.5"></i>
-            <span class="text-[10px] font-bold">پربازدید</span>
-        </a>
-        <a href="#" id="mobile-search-btn-nav" class="flex flex-col items-center gap-1 text-gray-400">
-            <i data-lucide="search" class="w-6 h-6" stroke-width="1.5"></i>
-            <span class="text-[10px] font-bold">جستجو</span>
-        </a>
-        <button id="mobile-menu-trigger" class="flex flex-col items-center gap-1 text-gray-400">
-            <i data-lucide="layout-grid" class="w-6 h-6" stroke-width="1.5"></i>
-            <span class="text-[10px] font-bold">دسته‌ها</span>
-        </button>
-    </nav>
+   
 
     <!-- Mobile Sidebar Menu -->
     <div id="mobile-menu"

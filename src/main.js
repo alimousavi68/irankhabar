@@ -208,14 +208,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // Using newsData for mock most visited content with images
     newsData.slice(10, 15).forEach((news) => {
       const item = document.createElement('a');
-      item.href = '#';
-      item.className = 'flex gap-4 group cursor-pointer items-start border-b border-[#e0e0e0] pb-5 last:border-0 last:pb-0 text-right';
+      item.href = 'post.html';
+      item.className = 'group block py-4 border-b border-gray-100 dark:border-gray-800 last:border-0';
       item.innerHTML = `
-        <div class="flex-1">
-          <h4 class="text-[13px] font-bold text-gray-700 dark:text-gray-300 leading-relaxed group-hover:text-brand transition-colors line-clamp-2">${news.title}</h4>
-        </div>
-        <div class="w-[60px] h-[60px] rounded-lg overflow-hidden shrink-0">
-          <img src="${news.image}" alt="${news.title}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+        <div class="flex items-center gap-4 text-right">
+          <div class="w-24 h-16 shrink-0 overflow-hidden rounded-lg">
+            <img src="${news.image}" alt="${news.title}" 
+                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+          </div>
+          <div class="flex-1">
+            <h3 class="text-sm font-bold leading-snug group-hover:text-brand transition-colors line-clamp-2">
+              ${news.title}</h3>
+          </div>
         </div>
       `;
       mostVisitedContainer.appendChild(item);

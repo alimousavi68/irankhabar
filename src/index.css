@@ -194,9 +194,84 @@
   .social-whatsapp-bg { background: #25D366 !important; }
   .social-bale-bg { background: linear-gradient(135deg, #00c493 0%, #00a078 100%) !important; }
   .social-rubika-bg { background: linear-gradient(135deg, #8e24aa 0%, #6a1b9a 100%) !important; }
-  .social-twitter-bg { background: #000000 !important; }
+  .social-eitaa-bg { background: rgb(255, 129, 0) !important; }
 
-  /* Glass Shine Effect Animation */
+  .social-btn-gradient {
+    --borderWidth: 3px;
+    position: relative;
+    z-index: 1;
+    background: white; /* Button center stays white */
+    transition: all 0.3s ease;
+    animation: soft-bounce 0.8s ease-in-out infinite;
+  }
+
+  @keyframes soft-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+  }
+
+  .dark .social-btn-gradient {
+    background: #111827;
+  }
+
+  .social-btn-gradient:after {
+    content: '';
+    position: absolute;
+    top: calc(-1 * var(--borderWidth));
+    left: calc(-1 * var(--borderWidth));
+    height: calc(100% + var(--borderWidth) * 2);
+    width: calc(100% + var(--borderWidth) * 2);
+    background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+    border-radius: 9999px; /* rounded-full */
+    z-index: -1;
+    animation: animatedgradient 3s ease alternate infinite;
+    background-size: 300% 300%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .group:hover .social-btn-gradient:after {
+    opacity: 1;
+  }
+
+  .group:hover .social-btn-gradient {
+    border-color: transparent !important;
+  }
+
+  @keyframes animatedgradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Modern Ripple/Pulse Animation for Social Cards */
+  .social-card-pulse {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .social-card-pulse::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease-out, height 0.6s ease-out, opacity 0.6s ease-out;
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  .social-card-pulse:hover::before {
+    width: 300%;
+    height: 300%;
+    opacity: 0;
+  }
+
+  /* Glass Shine Effect Animation (Improved) */
   .social-card-shine::after {
     content: "";
     position: absolute;
