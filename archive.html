@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آرشیو اخبار - اخبار ایران</title>
+    <meta name="description" content="آرشیو موضوعی اخبار و تحلیل‌های روز ایران و جهان">
+    <link rel="stylesheet" href="src/index.css">
+    <script src="/vendor/lucide.min.js"></script>
+</head>
+
+<body class="antialiased">
+
+    <!-- Header -->
+    <header class="bg-white dark:bg-black border-b border-gray-100 dark:border-gray-800 shadow-sm z-[100]">
+        <!-- Desktop Header (Hidden on Mobile) -->
+        <div class="hidden lg:block">
+            <!-- Top Row: Logo & Info -->
+            <div class="container-custom py-2 flex items-center justify-between">
+                <!-- Right: Logo -->
+                <a href="./" class="flex flex-col items-start group">
+                    <div class="text-4xl font-medium tracking-tighter leading-none">
+                        <img src="images/logo.svg" alt="لوگوی اخبار ایران" class="h-14 w-auto" width="220" height="56">
+                    </div>
+                    <div class="text-[10px] font-bold text-gray-400 mt-1 uppercase tracking-[0.2em]">news and analytics
+                    </div>
+                </a>
+
+                <!-- Left: Date, Time & Icons -->
+                <div class="flex flex-col items-end gap-2">
+                    <div id="persian-date-time"
+                        class="text-[11px]  text-gray-500 flex flex-col items-end leading-tight">
+                        <span id="current-date">۱۴۰۵ فروردین ۲۶، چهارشنبه</span>
+                        <span id="current-time">۱۵:۵۸:۰۳</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <button id="search-btn" class="text-gray-400 hover:text-brand transition-colors cursor-pointer"
+                            aria-label="جستجو">
+                            <i data-lucide="search" class="w-4 h-4" stroke-width="2"></i>
+                        </button>
+                        <button class="text-gray-400 hover:text-brand transition-colors cursor-pointer"
+                            aria-label="RSS">
+                            <i data-lucide="rss" class="w-4 h-4" stroke-width="2"></i>
+                        </button>
+                        <button id="dark-mode-toggle"
+                            class="text-gray-400 hover:text-brand transition-colors cursor-pointer"
+                            aria-label="تغییر تم">
+                            <i data-lucide="moon" class="w-4 h-4 dark:hidden" stroke-width="2"></i>
+                            <i data-lucide="sun" class="w-4 h-4 hidden dark:block" stroke-width="2"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Row: Navigation Bar -->
+            <div class="container-custom relative z-50 -mb-5">
+                <div class="brand-nav-bar flex items-center">
+                    <a href="./" class="nav-link">صفحه اصلی</a>
+                    <nav class="flex items-center">
+                        <a href="#" class="nav-link">عناوین اخبار</a>
+                        <a href="archive.html" class="nav-link nav-link-active">سیاسی</a>
+                        <a href="#" class="nav-link">اقتصادی</a>
+                        <a href="#" class="nav-link">اجتماعی</a>
+                        <a href="#" class="nav-link">حوادث</a>
+                        <a href="#" class="nav-link">سبک زندگی</a>
+                        <a href="#" class="nav-link">دانش</a>
+                        <a href="#" class="nav-link">ورزشی</a>
+                        <a href="#" class="nav-link">استان‌ها</a>
+                        <a href="#" class="nav-link">فرهنگی</a>
+                        <a href="#" class="nav-link">سرگرمی</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Header (Simple & Minimal) -->
+        <div class="lg:hidden container-custom py-2 flex items-center justify-between">
+            <a href="./" class="flex flex-col items-start">
+                <div class="text-2xl font-medium tracking-tighter leading-none">
+                    <img src="images/logo.svg" alt="لوگوی اخبار ایران" class="h-8 w-auto" width="125" height="32">
+                </div>
+                <div class="text-[7px] font-bold text-gray-400 mt-0.5 uppercase tracking-[0.1em]">news and analytics
+                </div>
+            </a>
+            <div class="flex items-center gap-3">
+                <button id="search-btn-mobile" class="text-gray-400 hover:text-brand transition-colors cursor-pointer"
+                    aria-label="جستجو">
+                    <i data-lucide="search" class="w-6 h-6" stroke-width="1.5"></i>
+                </button>
+                <button id="dark-mode-toggle-mobile"
+                    class="text-gray-400 hover:text-brand transition-colors cursor-pointer" aria-label="تغییر تم">
+                    <i data-lucide="moon" class="w-6 h-6 dark:hidden" stroke-width="1.5"></i>
+                    <i data-lucide="sun" class="w-6 h-6 hidden dark:block" stroke-width="1.5"></i>
+                </button>
+                <button id="mobile-menu-btn"
+                    class="p-1 text-gray-400 hover:text-brand transition-colors cursor-pointer">
+                    <i data-lucide="menu" class="w-6 h-6" stroke-width="1.5"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Spotlight Search Modal -->
+    <div id="spotlight-search" class="spotlight-overlay">
+        <div class="spotlight-content">
+            <div class="p-6 border-b border-gray-100 dark:border-gray-800 flex items-center gap-4">
+                <i data-lucide="search" class="w-6 h-6 text-brand"></i>
+                <input type="text" id="spotlight-input" placeholder="جستجو در بین اخبار..."
+                    class="flex-1 bg-transparent border-none outline-none text-xl font-bold placeholder:text-gray-400">
+                <button id="close-spotlight"
+                    class="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-colors">
+                    <i data-lucide="x" class="w-6 h-6 text-gray-400"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <main class="py-8 lg:py-12">
+        <div class="container-custom">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10">
+                <!-- Archive News List -->
+                <div class="lg:col-span-8  lg:pl-10">
+                    <!-- Archive Header -->
+                    <div id="archive-page-header" class="mb-8 bg-gray-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 shadow-sm">
+                        <nav class="flex items-center gap-2 text-[10px] text-gray-400 mb-3" aria-label="Breadcrumb">
+                            <a href="./" class="hover:text-brand transition-colors">خانه</a>
+                            <i data-lucide="chevron-left" class="w-2.5 h-2.5"></i>
+                            <span class="text-gray-500">آرشیو موضوعی</span>
+                        </nav>
+                        <h1 class="text-xl lg:text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
+                            <span class="w-1.5 h-8 bg-brand rounded-full"></span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-brand">دسته بندی:</span>
+                                <span class="text-secondary font-medium">اخبار سیاسی</span>
+                            </div>
+                        </h1>
+                       
+                    </div>
+
+                    <div id="latest-news-container" class="flex flex-col divide-y divide-gray-200 dark:divide-gray-800">
+                        <!-- News items will be generated by JS or static for demo -->
+                        <!-- Demo Item 1 -->
+                        <div class="flex gap-4 py-8 group cursor-pointer animate-fade-in border-b border-gray-100 dark:border-gray-800 last:border-0">
+                            <div class="w-32 h-24 sm:w-48 sm:h-32 overflow-hidden rounded-xl shrink-0 shadow-sm">
+                                <img src="images/دلارریال-e1740294924291.jpg" alt="خبر" 
+                                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" width="192" height="128">
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-base lg:text-xl font-bold group-hover:text-brand transition-colors line-clamp-2 leading-snug mb-2">
+                                    ایران برای مذاکرات مجدد راهی اسلام‌آباد می‌شود؟
+                                </h3>
+                                <p class="text-[11px] lg:text-xs text-gray-500 line-clamp-2 leading-relaxed hidden sm:block">
+                                    اخبار ضد و نقیض زیادی در خصوص مذاکرات دوم در اسلام آباد وجود دارد و هنوز حضور هیئت ایرانی در ابهام قرار دارد.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- More items... (In real app, generated by JS) -->
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="mt-12 flex items-center justify-center gap-2">
+                        <a href="#" class="w-10 h-10 flex items-center justify-center rounded-xl border border-gray-200 dark:border-gray-800 hover:bg-brand hover:text-white transition-all">
+                            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 flex items-center justify-center rounded-xl bg-brand text-white font-medium shadow-lg shadow-brand/20">۱</a>
+                        <a href="#" class="w-10 h-10 flex items-center justify-center rounded-xl border border-gray-200 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all font-medium">۲</a>
+                        <a href="#" class="w-10 h-10 flex items-center justify-center rounded-xl border border-gray-200 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all font-medium">۳</a>
+                        <span class="text-gray-400">...</span>
+                        <a href="#" class="w-10 h-10 flex items-center justify-center rounded-xl border border-gray-200 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all font-medium">۱۲</a>
+                        <a href="#" class="w-10 h-10 flex items-center justify-center rounded-xl border border-gray-200 dark:border-gray-800 hover:bg-brand hover:text-white transition-all">
+                            <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <aside class="lg:col-span-4 hidden lg:block  dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-4 md:p-6 shadow-sm">
+                    <div class="sticky top-8 space-y-12">
+                        <!-- Most Visited Widget -->
+                        <div>
+                            <h2 class="text-xl font-bold mb-6 flex items-center gap-3">
+                                <span class="w-1.5 h-6 bg-brand rounded-full"></span>
+                                <div class="flex items-center gap-1">
+                                    <span class="text-brand">اخبار</span><span class="text-secondary font-medium"> پربازدید</span>
+                                </div>
+                            </h2>
+                            <div id="most-visited-container" class="space-y-6">
+                                <!-- Populated by JS -->
+                            </div>
+                        </div>
+
+                        <!-- Ad Placeholder -->
+                        <div class="relative group overflow-hidden rounded-2xl border-2 border-dashed border-gray-200 dark:border-gray-800 aspect-square flex items-center justify-center bg-gray-50/50 dark:bg-gray-900/50">
+                            <div class="text-center">
+                                <i data-lucide="image" class="w-10 h-10 text-gray-300 mx-auto mb-2"></i>
+                                <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">محل تبلیغات شما</span>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#1a1a1a] text-gray-400 pt-12 pb-24 lg:pb-12 border-t border-gray-800">
+        <div class="container-custom">
+            <div class="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
+                <div class="hidden lg:block shrink-0">
+                    <a href="./" class="block">
+                        <img src="images/logo.svg" alt="لوگوی اخبار ایران" class="h-16 w-auto" width="220" height="56">
+                    </a>
+                </div>
+                <div class="hidden lg:block max-w-[420px]">
+                    <p class="text-sm text-gray-400 leading-loose">
+                        اخبار ایران، مرجع مستقل و پیشرو در ارائه تازه‌ترین خبرها و تحلیل‌های روز ایران و جهان است و با
+                        تمرکز بر دقت، سرعت و شفافیت، محتوای خبری قابل اتکا در اختیار مخاطب قرار می‌دهد.
+                    </p>
+                </div>
+                <div class="w-full lg:w-auto">
+                    <h4 class="text-white text-lg font-medium mb-5 text-center lg:text-right">مجوزها</h4>
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4">
+                        <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+                            <img src="assets/icons/eresaneh.png" alt="مجوز رسانه" class="h-[85px] w-auto object-contain" width="100" height="85" loading="lazy">
+                        </div>
+                        <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+                            <img src="assets/icons/rezi.webp" alt="نماد اعتماد رسانه" class="h-[85px] w-auto object-contain" width="100" height="85" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-8 mt-8 border-t border-gray-800 text-center text-xs text-gray-500">
+                <p>طراحی و توسعه: <a href="#" class="text-brand hover:underline transition-all">هشت بهشت</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Sidebar Menu -->
+    <div id="mobile-menu"
+        class="fixed inset-0 z-[120] bg-white dark:bg-black translate-x-full transition-transform duration-500 lg:hidden overflow-y-auto">
+        <div class="p-6">
+            <div class="flex items-center justify-between mb-8 border-b border-gray-100 dark:border-gray-800 pb-6">
+                <a href="./" class="text-2xl font-medium tracking-tighter">
+                    <span class="text-brand">اخبار</span><span> </span><span class="text-secondary">ایران</span>
+                </a>
+                <button id="close-menu-btn" class="p-2 bg-gray-50 dark:bg-gray-900 rounded-xl">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            <nav class="flex flex-col divide-y divide-gray-50 dark:divide-gray-900">
+                <a href="#" class="mobile-nav-item">عناوین اخبار</a>
+                <a href="archive.html" class="mobile-nav-item mobile-nav-item-active">سیاسی</a>
+                <a href="#" class="mobile-nav-item">اقتصادی</a>
+                <a href="#" class="mobile-nav-item">اجتماعی</a>
+                <a href="#" class="mobile-nav-item">حوادث</a>
+                <a href="#" class="mobile-nav-item">سبک زندگی</a>
+                <a href="#" class="mobile-nav-item">دانش</a>
+                <a href="#" class="mobile-nav-item">ورزشی</a>
+                <a href="#" class="mobile-nav-item">استان‌ها</a>
+                <a href="#" class="mobile-nav-item">فرهنگی</a>
+                <a href="#" class="mobile-nav-item">سرگرمی</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top"
+        class="fixed bottom-20 lg:bottom-8 left-8 z-50 p-3 border border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-black/80 backdrop-blur-md text-gray-900 dark:text-white rounded-full shadow-sm opacity-0 translate-y-10 transition-all duration-300 hover:border-brand hover:text-brand cursor-pointer">
+        <i data-lucide="arrow-up" class="w-5 h-5"></i>
+    </button>
+
+    <script type="module" src="src/main.js"></script>
+</body>
+
+</html>

@@ -161,13 +161,45 @@
     @apply text-2xl lg:text-3xl font-medium leading-tight mb-4 transition-colors;
   }
 
-  /* Bento Grid Enhancements */
-  .bento-card {
-    @apply relative overflow-hidden transition-all duration-500 rounded-xl;
+  /* Post Content Styles (Tables & Blockquotes) */
+  .post-content blockquote {
+    @apply relative pr-8 pl-4 py-4 my-8 bg-gray-50 dark:bg-gray-800/50 border-r-4 border-brand rounded-lg italic text-gray-700 dark:text-gray-300 leading-relaxed;
+    font-size: 0.95rem;
   }
 
-  .bento-card:hover {
-    @apply shadow-md translate-y-[-1px];
+  .post-content blockquote::before {
+    content: '"';
+    @apply absolute right-2 top-2 text-4xl text-brand/20 font-serif leading-none;
+  }
+
+  .post-content table {
+    @apply w-full border-collapse border border-gray-200 dark:border-gray-700 my-8 rounded-xl overflow-hidden;
+  }
+
+  .post-content table th {
+    @apply bg-gray-100 dark:bg-gray-900 p-4 font-bold text-sm border-l border-gray-200 dark:border-gray-700 last:border-l-0;
+  }
+
+  .post-content table td {
+    @apply p-4 text-sm border-l border-gray-100 dark:border-gray-800 last:border-l-0 transition-colors duration-200;
+  }
+
+  .post-content table tr {
+    @apply hover:bg-brand/5 dark:hover:bg-brand/10 transition-colors;
+  }
+
+  /* Print Optimization */
+  @media print {
+    body { @apply bg-white text-black p-0 m-0; }
+    .container-custom { @apply max-w-full w-full px-4; }
+    header, footer, aside, .print\:hidden, nav, #back-to-top, .post-actions-top { display: none !important; }
+    .post-content { @apply p-0 m-0; font-size: 12pt; line-height: 1.6; }
+    .post-content a { @apply text-black no-underline; }
+    .post-content blockquote { @apply border-gray-300 bg-transparent py-2 my-4; page-break-inside: avoid; }
+    .post-content table { @apply border-gray-300; page-break-inside: avoid; }
+    .post-content table th, .post-content table td { @apply border-gray-300 p-2; }
+    h1 { font-size: 24pt; margin-bottom: 20pt; }
+    img { max-width: 100% !important; page-break-inside: avoid; }
   }
 
   .bento-image {

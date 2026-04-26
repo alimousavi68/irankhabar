@@ -176,29 +176,55 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const renderNews = (data, append = false) => {
     if (!newsContainer) return;
+    const isArchivePage = !!document.getElementById('archive-page-header');
+    
     if (!append) {
       newsContainer.innerHTML = '';
       newsContainer.classList.add('opacity-0');
-      newsContainer.classList.add('divide-[#e0e0e0]');
+      if (!isArchivePage) newsContainer.classList.add('divide-[#e0e0e0]');
       setTimeout(() => newsContainer.classList.remove('opacity-0'), 50);
     }
 
     data.forEach(news => {
       const newsCard = document.createElement('div');
-      newsCard.className = 'flex gap-3 py-6 px-0 hover:bg-gray-50 dark:hover:bg-gray-900 transition-all group cursor-pointer animate-fade-in';
-      // Image on the right (first child in RTL)
-      newsCard.innerHTML = `
-        <div class="w-24 h-24 sm:w-32 sm:h-32 overflow-hidden rounded-lg shrink-0">
-          <img src="${news.image}" alt="${news.title}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" referrerPolicy="no-referrer">
-        </div>
-        <div class="flex-1">
-          <div class="text-[10px]  text-gray-400 mb-1">${news.kicker}</div>
-          <h3 class="text-[16px] lg:text-xl font-normal group-hover:text-brand transition-colors line-clamp-3 lg:line-clamp-2 leading-[1.6]">${news.title}</h3>
-          <p class="text-xs text-gray-500 mt-2 line-clamp-2 leading-relaxed hidden lg:block">${news.summary}</p>
-        </div>
-      `;
+      
+      if (isArchivePage) {
+        newsCard.className = 'flex gap-4 py-8 group cursor-pointer animate-fade-in border-b border-gray-100 dark:border-gray-800 last:border-0';
+        newsCard.innerHTML = `
+          <div class="w-32 h-24 sm:w-48 sm:h-32 overflow-hidden rounded-xl shrink-0 shadow-sm">
+            <img src="${news.image}" alt="${news.title}" 
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                 width="192" height="128" loading="lazy">
+          </div>
+          <div class="flex-1">
+            <h3 class="text-base lg:text-xl font-bold group-hover:text-brand transition-colors line-clamp-2 leading-snug mb-2">
+              ${news.title}
+            </h3>
+            <p class="text-[11px] lg:text-xs text-gray-500 line-clamp-2 leading-relaxed hidden sm:block">
+              ${news.summary}
+            </p>
+          </div>
+        `;
+      } else {
+        newsCard.className = 'flex gap-3 py-6 px-0 hover:bg-gray-50 dark:hover:bg-gray-900 transition-all group cursor-pointer animate-fade-in';
+        newsCard.innerHTML = `
+          <div class="w-24 h-24 sm:w-32 sm:h-32 overflow-hidden rounded-lg shrink-0">
+            <img src="${news.image}" alt="${news.title}" 
+                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
+                 referrerPolicy="no-referrer" width="128" height="128" loading="lazy">
+          </div>
+          <div class="flex-1">
+            <div class="text-[10px]  text-gray-400 mb-1">${news.kicker}</div>
+            <h3 class="text-[16px] lg:text-xl font-normal group-hover:text-brand transition-colors line-clamp-3 lg:line-clamp-2 leading-[1.6]">${news.title}</h3>
+            <p class="text-xs text-gray-500 mt-2 line-clamp-2 leading-relaxed hidden lg:block">${news.summary}</p>
+          </div>
+        `;
+      }
+      
       newsContainer.appendChild(newsCard);
     });
+
+    if (window.lucide) window.lucide.createIcons();
   };
 
   const renderMostVisited = () => {
@@ -214,10 +240,11 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="flex items-center gap-4 text-right">
           <div class="w-24 h-16 shrink-0 overflow-hidden rounded-lg">
             <img src="${news.image}" alt="${news.title}" 
-                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                 width="96" height="64" loading="lazy">
           </div>
           <div class="flex-1">
-            <h3 class="text-sm font-bold leading-snug group-hover:text-brand transition-colors line-clamp-2">
+            <h3 class="text-[13px] font-bold leading-snug group-hover:text-brand transition-colors line-clamp-2">
               ${news.title}</h3>
           </div>
         </div>

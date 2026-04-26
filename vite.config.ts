@@ -19,6 +19,7 @@ export default defineConfig({
       input: {
         main: path.resolve(__dirname, 'index.html'),
         post: path.resolve(__dirname, 'post.html'),
+        archive: path.resolve(__dirname, 'archive.html'),
       },
     },
   },
